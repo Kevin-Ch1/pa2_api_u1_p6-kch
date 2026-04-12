@@ -15,9 +15,10 @@ public class PedidoService {
         System.out.println("Total del pedido: " + pedido.getTotal());
         System.out.println("Guardando en la base de datos");
 
-        //NotificadorMail n1 = new NotificadorMail(); Sin DI
-        //Con DI por el contenedor
-        notificadorMail.enviar(pedido.getCorreo(), "Se ha creado un pedido para ser atentido");
+        // NotificadorMail n1 = new NotificadorMail(); Sin DI
+        // Con DI por el contenedor
+        System.out.println("==========================");
+        notificadorMail.enviar(pedido.getCorreo(), "Se ha creado un pedido para ser atendido");
 
     }
 }

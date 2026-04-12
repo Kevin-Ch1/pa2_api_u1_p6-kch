@@ -6,7 +6,8 @@ public class Pedido {
     private double total;
     private String correo;
 
-    //Buena Practica: Crear el constrcutor por defecto cuando se sobrescriba el mismo
+    // Buena Practica: Crear el constrcutor por defecto cuando se sobrescriba el
+    // mismo
     public Pedido() {
     }
 
@@ -17,31 +18,37 @@ public class Pedido {
         this.correo = correo;
     }
 
-    //Metodos SET y GET
+    // Metodos SET y GET
     public String getCliente() {
         return cliente;
     }
+
     public void setCliente(String cliente) {
         this.cliente = cliente;
     }
+
     public String getProducto() {
         return producto;
     }
+
     public void setProducto(String producto) {
         this.producto = producto;
     }
+
     public double getTotal() {
         return total;
     }
+
     public void setTotal(double total) {
         this.total = total;
     }
+
     public String getCorreo() {
         return correo;
     }
+
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
-    
 }
