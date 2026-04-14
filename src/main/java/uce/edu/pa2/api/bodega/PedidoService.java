@@ -6,8 +6,31 @@ import jakarta.inject.Inject;
 @ApplicationScoped
 public class PedidoService {
 
+    
+    /*
+    // DI por atributo
     @Inject
     private NotificadorMail notificadorMail;
+    
+    // DI por constructor
+    private NotificadorMail notificadorMail;
+
+    @Inject
+    public PedidoService(NotificadorMail notificadorMail) {
+        this.notificadorMail = notificadorMail;
+    }
+
+    // DI por metodo
+    private NotificadorMail notificadorMail;
+
+    @Inject
+    public void setNotificador(NotificadorMail notificadorMail){
+        this.notificadorMail = notificadorMail;
+    }
+    */
+
+    @Inject
+    private NotificadorSelector selector;
 
     public void registrar(Pedido pedido) {
         System.out.println("Registrando pedido");
@@ -18,7 +41,8 @@ public class PedidoService {
         // NotificadorMail n1 = new NotificadorMail(); Sin DI
         // Con DI por el contenedor
         System.out.println("==========================");
-        notificadorMail.enviar(pedido.getCorreo(), "Se ha creado un pedido para ser atendido");
+        Notificador notificador = this.selector.seleccionar(pedido.getTotal());
+        notificador.enviar(pedido.getDestino(), "Pedido Registrado");
 
     }
 }

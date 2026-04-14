@@ -26,11 +26,12 @@ public class Main {
             Pedido pedido = new Pedido(
                     "Kevin Chicaiza",
                     "Mentas",
-                    200,
+                    250,
                     "kevinCh@gmail.com");
             System.out.println("==========================");
             this.pedidoService.registrar(pedido);
-
+            
+            /*
             Transferencia trans = new Transferencia(
                     "Kevin Chicaiza",
                     "Maria Perez",
@@ -39,7 +40,7 @@ public class Main {
                     "Pago de pedido");
             System.out.println("==========================");
             this.transferenciaService.registrar(trans);
-
+            */
             return 0;
         }
 
