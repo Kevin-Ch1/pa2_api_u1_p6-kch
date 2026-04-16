@@ -1,5 +1,6 @@
 package uce.edu.pa2.api.bodega;
 
+import io.quarkus.arc.Unremovable;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -29,6 +30,7 @@ public class PedidoService {
     }
     */
 
+   
     @Inject
     private NotificadorSelector selector;
 
