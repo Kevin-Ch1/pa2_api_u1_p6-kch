@@ -13,55 +13,58 @@ public class Main {
     }
 
     public static class App implements QuarkusApplication {
-        // Modelos IoC
-        // 1. DI
-        @Inject
-        private PedidoService pedidoService;
-        
-        // 2. Service Locater (Lookup)
-        // private PedidoService pedidoService = CDI.current().select(PedidoService.class).get();
-        
 
         @Inject
-        private PagoTarjetaCredito pagoTc;
+        private AmbitoAplicacion ambito;
 
         @Inject
-        private PagoEfectivo pagoE;
+        private ClaseIntermedia claseIntermedia;
+        /*
+         * @Inject
+         * private AmbitoRequest ambitoRequest;
+         */
+
+        @Inject
+        private AmbitoInject ambitoInject;
+
+        @Inject
+        private AmbitoSingleton ambitoSingleton;
 
         @Override
         public int run(String... args) {
 
-            // Caso 1
-            Pedido pedido = new Pedido(
-                    "Kevin Chicaiza",
-                    "Mentas",
-                    250,
-                    "kevinCh@gmail.com");
-            System.out.println("==========================");
-            this.pedidoService.registrar(pedido, pagoE);
-            
-            // Caso 2
-            Pedido pedido1 = new Pedido(
-                    "Kevin Chicaiza",
-                    "Mentas",
-                    250,
-                    null);
-            System.out.println("==========================");
-            this.pedidoService.registrar(pedido1, pagoTc);
+            this.claseIntermedia.imprimirObjetoValor();
+
+            System.out.println(this.ambito.incrementar());
+            System.out.println(this.ambito.incrementar());
+            System.out.println(this.ambito.incrementar());
+
+            this.claseIntermedia.imprimirObjetoValor();
+
+            /*
+             * System.out.println("************AMBITO REQUEST*********");
+             * System.out.println(this.ambitoRequest.incrementar());
+             * System.out.println(this.ambitoRequest.incrementar());
+             * System.out.println(this.ambitoRequest.incrementar());
+             */
+
+            System.out.println("************AMBITO DEPENDENT*********");
+            System.out.println(this.ambitoInject.incrementar());
+            System.out.println(this.ambitoInject.incrementar());
+            System.out.println(this.ambitoInject.incrementar());
+
+            this.claseIntermedia.imprimirObjetoValorInject();
+
+            System.out.println("************AMBITO SINGLETON*********");
+            this.claseIntermedia.imprimirObjetoValorSingleton();
+            System.out.println(this.ambitoSingleton.incrementar());
+            System.out.println(this.ambitoSingleton.incrementar());
+            System.out.println(this.ambitoSingleton.incrementar());
+
+            this.claseIntermedia.imprimirObjetoValorSingleton();
 
             return 0;
         }
 
     }
 }
-
-/*
- * Transferencia trans = new Transferencia(
- * "Kevin Chicaiza",
- * "Maria Perez",
- * 200,
- * "Cuenta 1234567890",
- * "Pago de pedido");
- * System.out.println("==========================");
- * this.transferenciaService.registrar(trans);
- */
