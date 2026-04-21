@@ -15,53 +15,38 @@ public class Main {
     public static class App implements QuarkusApplication {
 
         @Inject
-        private AmbitoAplicacion ambito;
-
+        private IVAInject ivaInject;
+        @Inject
+        private IVASingleton ivaSingleton;
+        @Inject
+        private IVAplicacion ivaAplicacion;
         @Inject
         private ClaseIntermedia claseIntermedia;
-        /*
-         * @Inject
-         * private AmbitoRequest ambitoRequest;
-         */
-
-        @Inject
-        private AmbitoInject ambitoInject;
-
-        @Inject
-        private AmbitoSingleton ambitoSingleton;
 
         @Override
         public int run(String... args) {
 
-            this.claseIntermedia.imprimirObjetoValor();
+            System.out.println("**************IVA Aplicacion: ********************");
+            System.out.println(this.ivaAplicacion);
+            System.out.println(this.ivaAplicacion.aumentarIva(100));
+            this.ivaAplicacion.cambiarIva(0.05);
+            this.claseIntermedia.imprimirObjetoIVA(100);
+            System.out.println(this.ivaAplicacion.aumentarIva(100));
 
-            System.out.println(this.ambito.incrementar());
-            System.out.println(this.ambito.incrementar());
-            System.out.println(this.ambito.incrementar());
+            System.out.println("**************IVA Inject: ********************");
+            System.out.println(this.ivaInject);
+            System.out.println(this.ivaInject.aumentarIva(100));
+            this.ivaInject.cambiarIva(0.20);
+            this.claseIntermedia.imprimirObjetoIVAInject(100);
+            System.out.println(this.ivaInject.aumentarIva(100));
 
-            this.claseIntermedia.imprimirObjetoValor();
-
-            /*
-             * System.out.println("************AMBITO REQUEST*********");
-             * System.out.println(this.ambitoRequest.incrementar());
-             * System.out.println(this.ambitoRequest.incrementar());
-             * System.out.println(this.ambitoRequest.incrementar());
-             */
-
-            System.out.println("************AMBITO DEPENDENT*********");
-            System.out.println(this.ambitoInject.incrementar());
-            System.out.println(this.ambitoInject.incrementar());
-            System.out.println(this.ambitoInject.incrementar());
-
-            this.claseIntermedia.imprimirObjetoValorInject();
-
-            System.out.println("************AMBITO SINGLETON*********");
-            this.claseIntermedia.imprimirObjetoValorSingleton();
-            System.out.println(this.ambitoSingleton.incrementar());
-            System.out.println(this.ambitoSingleton.incrementar());
-            System.out.println(this.ambitoSingleton.incrementar());
-
-            this.claseIntermedia.imprimirObjetoValorSingleton();
+            System.out.println("**************IVA Singleton: ********************");
+            System.out.println(this.ivaSingleton);
+            System.out.println(this.ivaSingleton.aumentarIva(100));
+            this.ivaSingleton.cambiarIva(0.10);
+            this.claseIntermedia.imprimirObjetoIVASingleton(100);
+            System.out.println(this.ivaSingleton.aumentarIva(100));
+            
 
             return 0;
         }

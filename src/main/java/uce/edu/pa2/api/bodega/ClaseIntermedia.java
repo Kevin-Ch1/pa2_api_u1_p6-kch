@@ -5,26 +5,27 @@ import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class ClaseIntermedia {
-    
-    @Inject
-    private AmbitoAplicacion ambitoAplicacion;
-    @Inject
-    private AmbitoInject ambitoInject;
-    @Inject
-    private AmbitoSingleton ambitoSingleton;
 
-    public void imprimirObjetoValor(){
-        System.out.println(this.ambitoAplicacion);
-        System.out.println(this.ambitoAplicacion.incrementar());
+    @Inject
+    private IVASingleton ivaSingleton;
+    @Inject
+    private IVAInject ivaInject;
+    @Inject
+    private IVAplicacion ivaAplicacion;
+
+    public void imprimirObjetoIVA(double monto){
+        System.out.println(this.ivaAplicacion);
+        System.out.println(this.ivaAplicacion + " Cobrando: " + this.ivaAplicacion.aumentarIva(monto));
     }
 
-    public void imprimirObjetoValorInject(){
-        System.out.println(this.ambitoInject);
-        System.out.println(this.ambitoInject.incrementar());
+    public void imprimirObjetoIVAInject(double monto){
+        System.out.println(this.ivaInject);
+        System.out.println(this.ivaInject + " Cobrando: " + this.ivaInject.aumentarIva(monto));
     }
 
-    public void imprimirObjetoValorSingleton(){
-        System.out.println(this.ambitoSingleton);
-        System.out.println(this.ambitoSingleton.incrementar());
+    public void imprimirObjetoIVASingleton(double monto){
+        System.out.println(this.ivaSingleton);
+        System.out.println(this.ivaSingleton + " Cobrando: " + this.ivaSingleton.aumentarIva(monto));
     }
+
 }
