@@ -1,6 +1,7 @@
 package uce.edu.pa2.api.bodega;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 
 @ApplicationScoped
 public class EstadisticasVentasGlobales {
