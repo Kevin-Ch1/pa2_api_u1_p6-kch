@@ -1,83 +1,51 @@
 # pa2_api_u1_p6_kch
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Ejemplos de uso de Contextos
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+### @ApplicationScope
 
-## Running the application in dev mode
+**1.- Clientes de APIs externas:** Evita crear clientes HTTP repetidamente.
 
-You can run your application in dev mode that enables live coding using:
+**2.- Caché en Memeoria:** Para datos que cambian poco.
 
-```shell script
-./mvnw quarkus:dev
-```
+**3.- Cliente REST:** Para llamar servicios externos de forma reusable.
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+**4.- Configuración y Properties:** Bean que centraliza lecturas de configuración.
 
-## Packaging and running the application
+**5.- Scheduler:** Para ejecutar procesos en segundo plano.
 
-The application can be packaged using:
+**6.- Rate limiter por IP:** Controla cuántas peticiones acepta cada IP en una ventana de tiempo.
 
-```shell script
-./mvnw package
-```
+**7.- Generador de Secuencias:** Mantiene un control atómico global para generrar IDs únicos en la JVM.
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+### @Dependent
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+**1.- Builder de consultas SQL dinámicas:** Construye queries cin estado mutable; cada uso debe partir desde cero.
 
-If you want to build an _über-jar_, execute the following command:
+**2.- Validador de formulario con errores acumulados:** Acumula errores de validación durante un único proceso de validación.
 
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
+**3.- Formateador de moneda:** Formatea números como monedas usando el Locale del bean que lo inyecta.
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+**4.- Serializador JSON configurable:** Envuelve ObjectMapper con configuración específica para cada uso.
 
-## Creating a native executable
+**5.- Validador de pipeline de datos (ETL):** Valida y registra errores fila a fila durante la importación de datos.
 
-You can create a native executable using:
+**6.- Cifrado y Criptografía:** Las clases de Java para encriptar o crear hashes no son seguros para hilos.
 
-```shell script
-./mvnw package -Dnative
-```
+**7.- Constructor de Facturas:** Una clase que calcula impuestos, aplica descuentos, suma líneas de productos y, al final, expulsa el objeto Factura final.
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+### @Singleton
 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
+**1.- Gestor de locks distribuidos en memoria:** Controla acceso exclusivo a recursos comparitdos.
 
-You can then execute your native executable with: `./target/pa2_api_u1_p6_kch-1.0.0-SNAPSHOT-runner`
+**2.- Logger personalizado:** Servicio que centraliza logging con formatos, nivel dinámico o envío a sistemas externos.
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+**3.- Registro de métricas:** Lleva estadísticas globales de la aplicación
 
-## Related Guides
+**4.- Servicio de traducción:** Provee traducciones reutilizables. 
 
-- REST ([guide](https://quarkus.io/guides/rest)): A Jakarta REST implementation utilizing build time processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
-- Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and method parameters for your beans (REST, CDI, Jakarta Persistence)
-- SmallRye OpenAPI ([guide](https://quarkus.io/guides/openapi-swaggerui)): Document your REST APIs with OpenAPI - comes with Swagger UI
-- REST Jackson ([guide](https://quarkus.io/guides/rest#json-serialisation)): Jackson serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it
-- Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code for Hibernate ORM via the active record or the repository pattern
-- SmallRye JWT ([guide](https://quarkus.io/guides/security-jwt)): Secure your applications with JSON Web Token
-- SmallRye JWT Build ([guide](https://quarkus.io/guides/security-jwt-build)): Create JSON Web Token with SmallRye JWT Build API
-- JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
+**5.- Gestor de ciclos de vida de la aplicación:** Orquesta el arranque y apagado ordenado de todos los subsitemas.
 
-## Provided Code
+**6.- Registro de freature flags:** Activa o desactiva funcionalidades en runtime sin reiniciar la app.
 
-### Hibernate ORM
-
-Create your first JPA entity
-
-[Related guide section...](https://quarkus.io/guides/hibernate-orm)
-
-
-[Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
-
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+**7.- Inicializador de datos maestros (Bootstrap):** Carga tablas de referencia al arranque y falla rápido si hay error.
