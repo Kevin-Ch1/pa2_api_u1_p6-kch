@@ -1,4 +1,4 @@
-package uce.edu.pa2.api.bodega;
+package uce.edu.pa2.api.Procesador;
 
 public class Venta {
     private String cliente;

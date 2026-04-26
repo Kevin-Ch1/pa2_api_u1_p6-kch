@@ -1,6 +1,5 @@
-package uce.edu.pa2.api.bodega;
+package uce.edu.pa2.api.Procesador;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.Dependent;
 
 @Dependent

@@ -1,10 +1,10 @@
-package uce.edu.pa2.api.bodega;
+package uce.edu.pa2.api.Procesador;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 @ApplicationScoped
-public class ProcesadorVentaService {
+public class ProcesadorVentaEnLineaService {
 
     @Inject
     private TrackingVenta trackingVenta;
@@ -13,8 +13,6 @@ public class ProcesadorVentaService {
     private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
     public void procesar(Venta venta) {
-        
-        //this.trackingVenta.reiniciar();
 
         this.trackingVenta.iniciar();
         // Inicia la venta

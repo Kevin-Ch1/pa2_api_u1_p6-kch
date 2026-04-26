@@ -4,6 +4,11 @@ import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 import jakarta.inject.Inject;
+import uce.edu.pa2.api.Procesador.EstadisticasVentasGlobales;
+import uce.edu.pa2.api.Procesador.ProcesadorVentaEnLineaService;
+import uce.edu.pa2.api.Procesador.ProcesadorVentaService;
+import uce.edu.pa2.api.Procesador.ProcesadorVentaService1;
+import uce.edu.pa2.api.Procesador.Venta;
 
 @QuarkusMain
 public class Main {
