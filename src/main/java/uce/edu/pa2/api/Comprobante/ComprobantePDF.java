@@ -1,4 +1,4 @@
-package uce.edu.pa2.api.Comprobante;
+package uce.edu.pa2.api.comprobante;
 
 import jakarta.enterprise.context.ApplicationScoped;
 

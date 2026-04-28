@@ -1,4 +1,4 @@
-package uce.edu.pa2.api.Ambitos;
+package uce.edu.pa2.api.ambitos;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

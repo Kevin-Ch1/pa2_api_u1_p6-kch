@@ -1,4 +1,4 @@
-package uce.edu.pa2.api.Pago;
+package uce.edu.pa2.api.pago;
 
 import jakarta.enterprise.context.ApplicationScoped;
 

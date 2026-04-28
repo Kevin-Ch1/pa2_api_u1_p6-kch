@@ -1,4 +1,4 @@
-package uce.edu.pa2.api.Procesador;
+package uce.edu.pa2.api.procesador;
 
 public class Venta {
     private String cliente;

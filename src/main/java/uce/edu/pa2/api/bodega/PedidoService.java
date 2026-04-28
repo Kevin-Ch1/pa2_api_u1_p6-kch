@@ -2,11 +2,11 @@ package uce.edu.pa2.api.bodega;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import uce.edu.pa2.api.Comprobante.ComprobanteEstrategia;
-import uce.edu.pa2.api.Comprobante.ComprobanteSelector;
-import uce.edu.pa2.api.Notificador.Notificador;
-import uce.edu.pa2.api.Notificador.NotificadorSelector;
-import uce.edu.pa2.api.Pago.PagoEstrategia;
+import uce.edu.pa2.api.comprobante.ComprobanteEstrategia;
+import uce.edu.pa2.api.comprobante.ComprobanteSelector;
+import uce.edu.pa2.api.notificador.Notificador;
+import uce.edu.pa2.api.notificador.NotificadorSelector;
+import uce.edu.pa2.api.pago.PagoEstrategia;
 
 @ApplicationScoped
 public class PedidoService {

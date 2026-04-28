@@ -1,4 +1,4 @@
-package uce.edu.pa2.api.Notificador;
+package uce.edu.pa2.api.notificador;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
