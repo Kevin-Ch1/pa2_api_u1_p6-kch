@@ -26,9 +26,8 @@ public class Main {
         public int run(String... args) {
             Venta v1 = new Venta("Kevin Chicaiza", 70);
             this.procesadorVentaServiceTiempo.procesar(v1);
-            this.procesadorVentaServiceTiempo.reProcesar(v1);
-            System.out.println("============================");
-            this.inventarioService.registrarInventario();
+            //this.procesadorVentaServiceTiempo.reProcesar(v1);
+            
 
             return 0;
         }

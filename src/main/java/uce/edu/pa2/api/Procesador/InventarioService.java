@@ -1,12 +1,12 @@
 package uce.edu.pa2.api.procesador;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import uce.edu.pa2.api.interceptor.MedirTiempo;
+import uce.edu.pa2.api.interceptor.Log;
 
 @ApplicationScoped
 public class InventarioService {
 
-    @MedirTiempo
+    @Log
     public void registrarInventario(){
         System.out.println("Registrando inventario");
 

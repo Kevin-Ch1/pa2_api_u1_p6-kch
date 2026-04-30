@@ -2,6 +2,7 @@ package uce.edu.pa2.api.procesador;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import uce.edu.pa2.api.interceptor.Log;
 import uce.edu.pa2.api.interceptor.MedirTiempo;
 
 @ApplicationScoped
@@ -11,8 +12,9 @@ public class ProcesadorVentaServiceTiempo {
     private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
     @MedirTiempo
+    @Log
     public void procesar(Venta venta) {
-
+        //System.out.println("Entro al método con los siguientes valores" + venta.getCliente());
         System.out.println("Procesado venta");
 
         try {
@@ -24,9 +26,10 @@ public class ProcesadorVentaServiceTiempo {
         // Registrar estadisticas
         this.estadisticasVentasGlobales.registrarVenta(venta.getTotal());
         System.out.println("Fin del pedido");
+        //this.reProcesar(venta); // No se va ejecutar el intercepyor del metodo, porque es una llamada interna
     }
 
-    @MedirTiempo
+    @Log
     public void reProcesar(Venta venta) {
 
         System.out.println("Reprocesado venta");
