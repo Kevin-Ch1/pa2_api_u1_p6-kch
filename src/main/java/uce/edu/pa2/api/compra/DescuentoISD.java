@@ -1,7 +1,6 @@
-package uce.edu.pa2.api;
+package uce.edu.pa2.api.compra;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import uce.edu.pa2.api.compra.Descuento;
 
 @ApplicationScoped
 public class DescuentoISD implements Descuento {

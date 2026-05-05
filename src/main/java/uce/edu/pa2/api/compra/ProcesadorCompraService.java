@@ -8,10 +8,6 @@ import jakarta.inject.Inject;
 public class ProcesadorCompraService {
 
     @Inject
-    private DescuentoIVA descuentoIVA;
-    // Detecta todas las implementaciones que tiene el sistema y las guarda en una
-    // lista
-    @Inject
     private Instance<Descuento> descuentos;
 
     public void procesar(Compra compra) {
@@ -21,12 +17,6 @@ public class ProcesadorCompraService {
         }
         compra.setTotal(total);
         System.out.println("Su valor a pagar es: " + compra.getTotal());
-
-        /*
-         * Ejemplo de alto acoplamiento
-         * double valorAPagar = this.descuentoIVA.aplicar(compra.getSubtotal());
-         * System.out.println("Su valor a pagar es: " + valorAPagar);
-         */
     }
 
 }
