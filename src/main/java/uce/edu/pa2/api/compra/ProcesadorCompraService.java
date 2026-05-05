@@ -1,0 +1,32 @@
+package uce.edu.pa2.api.compra;
+
+import jakarta.enterprise.inject.Instance;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+
+@ApplicationScoped
+public class ProcesadorCompraService {
+
+    @Inject
+    private DescuentoIVA descuentoIVA;
+    // Detecta todas las implementaciones que tiene el sistema y las guarda en una
+    // lista
+    @Inject
+    private Instance<Descuento> descuentos;
+
+    public void procesar(Compra compra) {
+        double total = compra.getSubtotal();
+        for (Descuento des : descuentos) {
+            total = des.aplicar(total);
+        }
+        compra.setTotal(total);
+        System.out.println("Su valor a pagar es: " + compra.getTotal());
+
+        /*
+         * Ejemplo de alto acoplamiento
+         * double valorAPagar = this.descuentoIVA.aplicar(compra.getSubtotal());
+         * System.out.println("Su valor a pagar es: " + valorAPagar);
+         */
+    }
+
+}
