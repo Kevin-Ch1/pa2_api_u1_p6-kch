@@ -1,8 +1,10 @@
 package uce.edu.pa2.api.compra;
 
+import jakarta.annotation.Priority;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
+@Priority(5)
 public class DescuentoIVA implements Descuento {
 
     @Override
