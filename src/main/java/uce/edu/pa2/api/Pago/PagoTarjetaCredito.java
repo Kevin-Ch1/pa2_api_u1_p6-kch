@@ -1,14 +1,19 @@
 package uce.edu.pa2.api.pago;
 
+import jakarta.annotation.Priority;
 import jakarta.enterprise.context.ApplicationScoped;
+import uce.edu.pa2.api.compra.Compra;
 
 @ApplicationScoped
+@Priority(2)
 public class PagoTarjetaCredito implements PagoEstrategia {
 
     @Override
-    public void realizar(double valor) {
-        System.out.println("Presenta la pantalla donde pide los datos de la tarjeta");
-        System.out.println("Realizando cobro");
+    public double realizar(Compra compra) {
+        if(compra.getTotal() == 0) return 0;
+
+        System.out.println("Realizando pago con tarjeta de credito");
+        return 0;
     }
 
 }

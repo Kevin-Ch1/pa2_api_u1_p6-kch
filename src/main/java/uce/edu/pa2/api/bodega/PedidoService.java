@@ -49,7 +49,7 @@ public class PedidoService {
         System.out.println("Total del pedido: " + pedido.getTotal());
         System.out.println("Guardando en la base de datos");
 
-        pago.realizar(pedido.getTotal());
+        // pago.realizar(pedido.getTotal());
 
         // NotificadorMail n1 = new NotificadorMail(); Sin DI
         // Con DI por el contenedor

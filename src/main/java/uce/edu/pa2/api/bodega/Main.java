@@ -6,6 +6,7 @@ import io.quarkus.runtime.annotations.QuarkusMain;
 import jakarta.inject.Inject;
 import uce.edu.pa2.api.compra.Compra;
 import uce.edu.pa2.api.compra.ProcesadorCompraService;
+import uce.edu.pa2.api.pago.PagoService;
 
 
 @QuarkusMain
@@ -19,11 +20,16 @@ public class Main {
 
         @Inject
         private ProcesadorCompraService compraService;
+        @Inject
+        private PagoService pagoService;
 
         @Override
         public int run(String... args) {
-            Compra compra = new Compra("Kevin Chicaiza", 100.0);
+            Compra compra = new Compra("Kevin Chicaiza", 150.0);
             this.compraService.procesar(compra);
+            System.out.println("============================================");
+            System.out.println("Valor total de la compra: " + compra.getTotal());
+            this.pagoService.realizarPago(compra);
             return 0;
         }
 
